@@ -23,7 +23,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        working-directory: BOUN-SWE-574-Fall-23-G2/dutluk/dutluk_backend
+        working-directory: dutluk/dutluk_backend
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
