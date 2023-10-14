@@ -31,24 +31,22 @@ jobs:
           name: java-app
           path: dutluk/dutluk_backend/target/*.jar
 
-  deploy:
-    runs-on: ubuntu-latest
+  push_to_main:
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+    runs-on: ubuntu-latest
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: java-app
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'Dutluk'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6CFB0BE8D86A4328862E59429029B565 }}
-          package: '*.jar'
+    - name: Configure Git
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
+
+    - name: Push to main
+      run: |
+        git checkout main
+        git merge --no-ff --no-commit development
+        git commit -m "Merge development into main"
+        git push origin main
+      
