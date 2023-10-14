@@ -48,7 +48,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'Dutluk'
+          app-name: 'Dutluk-test'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1B4B9AC17AD44B98AFF900BCC9D41B33 }}
           package: '*.jar'
