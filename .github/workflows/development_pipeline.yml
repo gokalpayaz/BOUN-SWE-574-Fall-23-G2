@@ -50,5 +50,5 @@ jobs:
         with:
           app-name: 'Dutluk-test'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1B4B9AC17AD44B98AFF900BCC9D41B33 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_24DAC6C924EB421FB8DBEDBEC8CBB79E }}
           package: '*.jar'
