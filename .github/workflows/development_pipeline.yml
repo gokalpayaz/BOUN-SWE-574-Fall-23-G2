@@ -10,6 +10,14 @@ on:
   workflow_dispatch:
 
 jobs:
+  sonarqube_scan:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Official SonarQube Scan
+          uses: SonarSource/sonarqube-scan-action@v2.0.1
+
+
+
   build:
     runs-on: ubuntu-latest
 
